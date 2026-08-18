@@ -14,6 +14,7 @@ const PORT = process.env.PORT || 3000;
 app.use(compression());
 app.use(cors());
 app.use(express.json());
+app.use(express.static(__dirname)); // Serve static files (images, css, etc)
 
 // Dashboard data - AZ-ZUHRI operations
 const dashboardData = {
