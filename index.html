@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AZ-ZUHRI Dashboard - Adverty</title>
+  <title>Maahad Tahfiz Az Zuhri - Performance Review</title>
   <style>
     * {
       margin: 0;
@@ -21,17 +21,190 @@
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      background: linear-gradient(to bottom right, #f8fafc, #e2e8f0);
+      background: linear-gradient(to bottom right, #f0fdf4, #ecfdf5);
       min-height: 100vh;
       padding: 24px;
+      color: #1f2937;
     }
 
     .container {
-      max-width: 1280px;
+      max-width: 1400px;
       margin: 0 auto;
     }
 
-    /* Header */
+    /* Corporate Header */
+    .corporate-header {
+      background: white;
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 32px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      border-top: 5px solid #047857;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+      gap: 32px;
+    }
+
+    .header-left {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .logo-section {
+      width: 80px;
+      height: 80px;
+      background: #ecfdf5;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #d1fae5;
+      flex-shrink: 0;
+    }
+
+    .logo-placeholder {
+      font-size: 40px;
+      text-align: center;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="50" y="60" font-size="60" text-anchor="middle" fill="%23047857">ع</text></svg>') center/contain no-repeat;
+    }
+
+    .org-info {
+      flex: 1;
+    }
+
+    .org-name {
+      font-size: 28px;
+      font-weight: 700;
+      color: #047857;
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+
+    .org-subtitle {
+      font-size: 14px;
+      color: #6b7280;
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .org-details {
+      display: flex;
+      gap: 24px;
+      font-size: 13px;
+      flex-wrap: wrap;
+    }
+
+    .detail-item {
+      display: flex;
+      gap: 6px;
+      color: #4b5563;
+    }
+
+    .detail-item strong {
+      color: #1f2937;
+      font-weight: 600;
+    }
+
+    .header-right {
+      text-align: right;
+    }
+
+    .report-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #047857;
+      margin-bottom: 8px;
+    }
+
+    .report-meta {
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    .header-divider {
+      height: 1px;
+      background: #e5e7eb;
+      margin: 24px 0;
+    }
+
+    .header-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .header-left-bottom {
+      flex: 1;
+    }
+
+    .project-info {
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .project-info-label {
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 4px;
+    }
+
+    .project-info-value {
+      color: #6b7280;
+    }
+
+    /* Month Selector */
+    .month-selector {
+      min-width: 280px;
+    }
+
+    .month-selector label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: #047857;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .month-selector select {
+      width: 100%;
+      padding: 12px 16px;
+      background: white;
+      border: 2px solid #d1fae5;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 500;
+      color: #0f172a;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(4, 120, 87, 0.05);
+      transition: all 0.3s;
+    }
+
+    .month-selector select:hover {
+      border-color: #047857;
+      box-shadow: 0 4px 12px rgba(4, 120, 87, 0.1);
+    }
+
+    .month-selector select:focus {
+      outline: none;
+      border-color: #047857;
+      box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.1);
+    }
+
+    /* Header Sections */
     .header {
       margin-bottom: 32px;
       display: flex;
@@ -49,35 +222,6 @@
     .header p {
       color: #475569;
       font-size: 16px;
-    }
-
-    .month-selector {
-      max-width: 256px;
-    }
-
-    .month-selector label {
-      display: block;
-      font-size: 14px;
-      font-weight: 600;
-      color: #334155;
-      margin-bottom: 8px;
-    }
-
-    .month-selector select {
-      width: 100%;
-      padding: 12px 16px;
-      background: white;
-      border: 2px solid #cbd5e1;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: 500;
-      color: #0f172a;
-      cursor: pointer;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-    }
-
-    .month-selector select:hover {
-      border-color: #94a3b8;
     }
 
     /* KPI Cards Grid */
@@ -102,11 +246,26 @@
       box-shadow: 0 15px 35px rgba(0,0,0,0.12);
     }
 
-    .kpi-card.blue { border-left-color: #3b82f6; }
-    .kpi-card.green { border-left-color: #10b981; }
-    .kpi-card.orange { border-left-color: #f97316; }
-    .kpi-card.purple { border-left-color: #a855f7; }
-    .kpi-card.pink { border-left-color: #ec4899; }
+    .kpi-card.blue { 
+      border-left-color: #047857;
+      background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+    }
+    .kpi-card.green { 
+      border-left-color: #0891b2;
+      background: linear-gradient(135deg, #ffffff 0%, #ecfdf5 100%);
+    }
+    .kpi-card.orange { 
+      border-left-color: #d97706;
+      background: linear-gradient(135deg, #ffffff 0%, #fef3c7 100%);
+    }
+    .kpi-card.purple { 
+      border-left-color: #7c3aed;
+      background: linear-gradient(135deg, #ffffff 0%, #f3e8ff 100%);
+    }
+    .kpi-card.pink { 
+      border-left-color: #db2777;
+      background: linear-gradient(135deg, #ffffff 0%, #fce7f3 100%);
+    }
 
     .kpi-label {
       color: #64748b;
@@ -121,6 +280,12 @@
       color: #0f172a;
       margin-bottom: 8px;
     }
+
+    .kpi-card.blue .kpi-value { color: #047857; }
+    .kpi-card.green .kpi-value { color: #0891b2; }
+    .kpi-card.orange .kpi-value { color: #d97706; }
+    .kpi-card.purple .kpi-value { color: #7c3aed; }
+    .kpi-card.pink .kpi-value { color: #db2777; }
 
     .kpi-subtitle {
       font-size: 12px;
@@ -161,8 +326,8 @@
       transition: width 0.3s ease;
     }
 
-    .progress-fill.manual { background: #10b981; }
-    .progress-fill.online { background: #3b82f6; }
+    .progress-fill.manual { background: linear-gradient(to right, #047857, #10b981); }
+    .progress-fill.online { background: linear-gradient(to right, #0891b2, #06b6d4); }
 
     .breakdown-value {
       font-size: 14px;
@@ -177,13 +342,13 @@
       border-radius: 16px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.08);
       padding: 32px;
-      border-top: 4px solid #0f172a;
+      border-top: 5px solid #047857;
     }
 
     .summary h2 {
       font-size: 20px;
       font-weight: bold;
-      color: #0f172a;
+      color: #047857;
       margin-bottom: 24px;
     }
 
@@ -209,9 +374,9 @@
       flex-shrink: 0;
     }
 
-    .summary-icon.blue { background: #dbeafe; }
-    .summary-icon.orange { background: #fed7aa; }
-    .summary-icon.purple { background: #e9d5ff; }
+    .summary-icon.blue { background: #d1fae5; }
+    .summary-icon.orange { background: #fef3c7; }
+    .summary-icon.purple { background: #f3e8ff; }
 
     .summary-content p {
       font-size: 14px;
@@ -265,6 +430,28 @@
         padding: 12px;
       }
 
+      .corporate-header {
+        padding: 20px;
+      }
+
+      .header-top {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .header-right {
+        text-align: left;
+      }
+
+      .header-bottom {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .month-selector {
+        min-width: auto;
+      }
+
       .header {
         margin-bottom: 24px;
       }
@@ -276,29 +463,73 @@
       .kpi-value {
         font-size: 22px;
       }
+
+      .org-name {
+        font-size: 22px;
+      }
+
+      .logo-section {
+        width: 60px;
+        height: 60px;
+      }
+
+      .logo-placeholder {
+        font-size: 30px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Header -->
-    <div class="header">
-      <div>
-        <h1>AZ-ZUHRI</h1>
-        <p>Performance Analytics & Commission Report</p>
+    <!-- Corporate Header -->
+    <div class="corporate-header">
+      <div class="header-top">
+        <div class="header-left">
+          <div class="logo-section">
+            <div class="logo-placeholder">📖</div>
+          </div>
+          <div class="org-info">
+            <div class="org-name">Maahad Tahfiz Az Zuhri</div>
+            <div class="org-subtitle">Islamic Quranic Education Institute</div>
+            <div class="org-details">
+              <div class="detail-item">
+                <span>📞</span>
+                <span><strong>Contact:</strong> To be added</span>
+              </div>
+              <div class="detail-item">
+                <span>🏦</span>
+                <span><strong>Bank:</strong> Maybank 552095232296</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="report-title">Performance Review</div>
+          <div class="report-meta">Monthly Operations Report</div>
+        </div>
       </div>
 
-      <div class="month-selector">
-        <label for="monthSelect">Select Month</label>
-        <select id="monthSelect">
-          <option value="January">January</option>
-          <option value="February">February</option>
-          <option value="March">March</option>
-          <option value="April">April</option>
-          <option value="May">May</option>
-          <option value="June">June</option>
-          <option value="July">July</option>
-        </select>
+      <div class="header-divider"></div>
+
+      <div class="header-bottom">
+        <div class="header-left-bottom">
+          <div class="project-info">
+            <div class="project-info-label">📋 Report Generated</div>
+            <div class="project-info-value">Monthly performance metrics and commission tracking</div>
+          </div>
+        </div>
+        <div class="month-selector">
+          <label for="monthSelect">Select Month</label>
+          <select id="monthSelect">
+            <option value="January">January 2026</option>
+            <option value="February">February 2026</option>
+            <option value="March">March 2026</option>
+            <option value="April">April 2026</option>
+            <option value="May">May 2026</option>
+            <option value="June">June 2026</option>
+            <option value="July">July 2026</option>
+          </select>
+        </div>
       </div>
     </div>
 
@@ -398,7 +629,28 @@
 
       <!-- Footer -->
       <div class="footer">
-        <p>AZ-ZUHRI Dashboard | Powered by Adverty | 2026</p>
+        <div style="background: white; border-radius: 12px; padding: 24px; margin-top: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-bottom: 20px;">
+            <div>
+              <p style="font-size: 12px; font-weight: 700; color: #047857; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Organization</p>
+              <p style="font-size: 14px; color: #1f2937; font-weight: 600; margin-bottom: 2px;">Maahad Tahfiz Az Zuhri</p>
+              <p style="font-size: 13px; color: #6b7280;">Islamic Quranic Education Institute</p>
+            </div>
+            <div>
+              <p style="font-size: 12px; font-weight: 700; color: #047857; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Bank Details</p>
+              <p style="font-size: 13px; color: #1f2937;"><strong>Account:</strong> 552095232296</p>
+              <p style="font-size: 13px; color: #1f2937;"><strong>Bank:</strong> Maybank</p>
+            </div>
+            <div>
+              <p style="font-size: 12px; font-weight: 700; color: #047857; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Contact</p>
+              <p style="font-size: 13px; color: #6b7280;">Contact details to be added</p>
+              <p style="font-size: 13px; color: #6b7280;">Location: Johor, Malaysia</p>
+            </div>
+          </div>
+          <div style="border-top: 1px solid #e5e7eb; padding-top: 16px; text-align: center;">
+            <p style="font-size: 12px; color: #9ca3af;">Performance Review Dashboard | Powered by Adverty | 2026</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
