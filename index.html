@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AZ-ZUHRI Dashboard - Adverty</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background: linear-gradient(to bottom right, #f8fafc, #e2e8f0);
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .header {
+      margin-bottom: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .header h1 {
+      font-size: 36px;
+      font-weight: bold;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      color: #475569;
+      font-size: 16px;
+    }
+
+    .month-selector {
+      max-width: 256px;
+    }
+
+    .month-selector label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 8px;
+    }
+
+    .month-selector select {
+      width: 100%;
+      padding: 12px 16px;
+      background: white;
+      border: 2px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 500;
+      color: #0f172a;
+      cursor: pointer;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+
+    .month-selector select:hover {
+      border-color: #94a3b8;
+    }
+
+    /* KPI Cards Grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .kpi-card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      padding: 24px;
+      border-left: 4px solid;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .kpi-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    }
+
+    .kpi-card.blue { border-left-color: #3b82f6; }
+    .kpi-card.green { border-left-color: #10b981; }
+    .kpi-card.orange { border-left-color: #f97316; }
+    .kpi-card.purple { border-left-color: #a855f7; }
+    .kpi-card.pink { border-left-color: #ec4899; }
+
+    .kpi-label {
+      color: #64748b;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .kpi-value {
+      font-size: 28px;
+      font-weight: bold;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+
+    .kpi-subtitle {
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    /* Breakdown Card */
+    .breakdown-section {
+      margin-bottom: 12px;
+    }
+
+    .breakdown-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+
+    .breakdown-label span {
+      font-size: 12px;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    .breakdown-label .pct {
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    .progress-bar {
+      background: #e2e8f0;
+      border-radius: 9999px;
+      height: 8px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 8px;
+      transition: width 0.3s ease;
+    }
+
+    .progress-fill.manual { background: #10b981; }
+    .progress-fill.online { background: #3b82f6; }
+
+    .breakdown-value {
+      font-size: 14px;
+      font-weight: bold;
+      color: #0f172a;
+      margin-top: 8px;
+    }
+
+    /* Summary Section */
+    .summary {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      padding: 32px;
+      border-top: 4px solid #0f172a;
+    }
+
+    .summary h2 {
+      font-size: 20px;
+      font-weight: bold;
+      color: #0f172a;
+      margin-bottom: 24px;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+    }
+
+    .summary-item {
+      display: flex;
+      gap: 16px;
+    }
+
+    .summary-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .summary-icon.blue { background: #dbeafe; }
+    .summary-icon.orange { background: #fed7aa; }
+    .summary-icon.purple { background: #e9d5ff; }
+
+    .summary-content p {
+      font-size: 14px;
+      font-weight: 500;
+      color: #64748b;
+      margin-bottom: 4px;
+    }
+
+    .summary-content h4 {
+      font-size: 24px;
+      font-weight: bold;
+      color: #0f172a;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 32px;
+      text-align: center;
+    }
+
+    .footer p {
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    /* Loading */
+    .loading {
+      text-align: center;
+      padding: 48px;
+      color: #64748b;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      border: 3px solid #e2e8f0;
+      border-top-color: #3b82f6;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 12px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      body {
+        padding: 12px;
+      }
+
+      .header {
+        margin-bottom: 24px;
+      }
+
+      .header h1 {
+        font-size: 28px;
+      }
+
+      .kpi-value {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div>
+        <h1>AZ-ZUHRI</h1>
+        <p>Performance Analytics & Commission Report</p>
+      </div>
+
+      <div class="month-selector">
+        <label for="monthSelect">Select Month</label>
+        <select id="monthSelect">
+          <option value="January">January</option>
+          <option value="February">February</option>
+          <option value="March">March</option>
+          <option value="April">April</option>
+          <option value="May">May</option>
+          <option value="June">June</option>
+          <option value="July">July</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Loading State -->
+    <div id="loading" class="loading">
+      <div class="spinner"></div>
+      <p>Loading dashboard...</p>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div id="dashboard" style="display: none;">
+      <!-- KPI Cards -->
+      <div class="kpi-grid">
+        <!-- Total Collection -->
+        <div class="kpi-card blue">
+          <div class="kpi-label">Total Collection</div>
+          <div class="kpi-value" id="totalCollection">RM 0.00</div>
+          <div class="kpi-subtitle" id="monthDisplay">January 2026</div>
+        </div>
+
+        <!-- Collection Breakdown -->
+        <div class="kpi-card green">
+          <div class="kpi-label">Collection Breakdown</div>
+          <div class="breakdown-section">
+            <div class="breakdown-label">
+              <span>Manual</span>
+              <span class="pct" id="manualPct">0%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill manual" id="manualBar" style="width: 0%"></div>
+            </div>
+            <div class="breakdown-value" id="manualValue">RM 0.00</div>
+          </div>
+          <div class="breakdown-section">
+            <div class="breakdown-label">
+              <span>Online</span>
+              <span class="pct" id="onlinePct">0%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill online" id="onlineBar" style="width: 0%"></div>
+            </div>
+            <div class="breakdown-value" id="onlineValue">RM 0.00</div>
+          </div>
+        </div>
+
+        <!-- Total Costing -->
+        <div class="kpi-card orange">
+          <div class="kpi-label">Total Costing</div>
+          <div class="kpi-value" id="totalCost">RM 0.00</div>
+          <div class="kpi-subtitle">Ad & operational costs</div>
+        </div>
+
+        <!-- Client Gets -->
+        <div class="kpi-card purple">
+          <div class="kpi-label">Client Gets (AZ-ZUHRI)</div>
+          <div class="kpi-value" id="clientNet">RM 0.00</div>
+          <div class="kpi-subtitle">Net after commission</div>
+        </div>
+
+        <!-- Adverty Gets -->
+        <div class="kpi-card pink">
+          <div class="kpi-label">Adverty Gets</div>
+          <div class="kpi-value" id="advertyUpah">RM 0.00</div>
+          <div class="kpi-subtitle">40% + 8% SST</div>
+        </div>
+      </div>
+
+      <!-- Summary Section -->
+      <div class="summary">
+        <h2>Cumulative Overview (All Months)</h2>
+        <div class="summary-grid">
+          <div class="summary-item">
+            <div class="summary-icon blue">📊</div>
+            <div class="summary-content">
+              <p>Total Collection (All Months)</p>
+              <h4 id="totalCollectionAll">RM 0.00</h4>
+            </div>
+          </div>
+
+          <div class="summary-item">
+            <div class="summary-icon orange">💰</div>
+            <div class="summary-content">
+              <p>Total Cost (All Months)</p>
+              <h4 id="totalCostAll">RM 0.00</h4>
+            </div>
+          </div>
+
+          <div class="summary-item">
+            <div class="summary-icon purple">✅</div>
+            <div class="summary-content">
+              <p>Total Client Gets (All Months)</p>
+              <h4 id="clientNetAll">RM 0.00</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p>AZ-ZUHRI Dashboard | Powered by Adverty | 2026</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let dashboardData = null;
+
+    // Fetch data from API
+    async function loadDashboard() {
+      try {
+        const response = await fetch('/api/dashboard');
+        dashboardData = await response.json();
+        
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('dashboard').style.display = 'block';
+        
+        updateDashboard('January');
+      } catch (error) {
+        console.error('Error loading dashboard:', error);
+        document.getElementById('loading').innerHTML = '<p>Error loading dashboard. Please refresh.</p>';
+      }
+    }
+
+    // Update dashboard with selected month data
+    function updateDashboard(month) {
+      const current = dashboardData.data[month];
+      const totals = dashboardData.totals;
+
+      // Update month display
+      document.getElementById('monthDisplay').textContent = `${month} 2026`;
+
+      // Calculate online & manual
+      const online = current.billplz + current.stripe;
+      const manual = current.manualBank;
+      const manualPct = ((manual / current.totalCollection) * 100).toFixed(1);
+      const onlinePct = ((online / current.totalCollection) * 100).toFixed(1);
+
+      // Update KPI cards
+      document.getElementById('totalCollection').textContent = `RM ${current.totalCollection.toFixed(2)}`;
+      document.getElementById('totalCost').textContent = `RM ${current.totalCost.toFixed(2)}`;
+      document.getElementById('clientNet').textContent = `RM ${current.clientNet.toFixed(2)}`;
+      document.getElementById('advertyUpah').textContent = `RM ${current.advertyUpah.toFixed(2)}`;
+
+      // Update breakdown
+      document.getElementById('manualPct').textContent = `${manualPct}%`;
+      document.getElementById('onlinePct').textContent = `${onlinePct}%`;
+      document.getElementById('manualBar').style.width = `${manualPct}%`;
+      document.getElementById('onlineBar').style.width = `${onlinePct}%`;
+      document.getElementById('manualValue').textContent = `RM ${manual.toFixed(2)}`;
+      document.getElementById('onlineValue').textContent = `RM ${online.toFixed(2)}`;
+
+      // Update totals
+      document.getElementById('totalCollectionAll').textContent = `RM ${totals.totalCollection.toFixed(2)}`;
+      document.getElementById('totalCostAll').textContent = `RM ${totals.totalCost.toFixed(2)}`;
+      document.getElementById('clientNetAll').textContent = `RM ${totals.clientNet.toFixed(2)}`;
+    }
+
+    // Month selector event listener
+    document.getElementById('monthSelect').addEventListener('change', (e) => {
+      updateDashboard(e.target.value);
+    });
+
+    // Refresh data every 30 seconds for real-time updates
+    setInterval(() => {
+      loadDashboard();
+    }, 30000);
+
+    // Load dashboard on page load
+    loadDashboard();
+  </script>
+</body>
+</html>
