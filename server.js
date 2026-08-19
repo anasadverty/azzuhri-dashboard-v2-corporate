@@ -60,7 +60,7 @@ const dashboardData = {
 const FACEBOOK_PAGE_ID = '116256619764756';
 const FACEBOOK_ACCESS_TOKEN = 'EAAM1TTZBRzhYBSZAm5ZCZCOuJhdwtbwzWABWhtCH78KTTYKZCwBcj542vY6cgrLReNwiUV9qlPZBJwg1qixhvOLgt8s5vKHkmZCcZBROkdAhz0CZC47VsdeMyqyroAKOYgbx4TZA6TrFCHGICyzSwSTSi7tuvi7irZBoPNYHxkh1js8KSRKa3dC9mBXZA9ags1qGu6QtSHo07AG0M6uc0qzn01LNG4S6xhWGWY8ONl0yalyaFhQZCTZA4KBAWlc0ZAoann3IkhAoQPFuwDhGepAKqt63ktcf21d';
 
-// Mock Facebook metrics (fallback data)
+// Default Facebook metrics (fallback)
 const facebookMetrics = {
   impressions: 1250,
   engagement: 89,
@@ -71,12 +71,48 @@ const facebookMetrics = {
   clickThroughRate: 3.2
 };
 
+// Monthly Facebook data storage
+let monthlyFacebookData = {
+  2025: {
+    January: { impressions: 1250, engagement: 89, comments: 23, shares: 12, newLikes: 45, videoViews: 567, clickThroughRate: 3.2 },
+    February: { impressions: 1450, engagement: 95, comments: 28, shares: 15, newLikes: 52, videoViews: 620, clickThroughRate: 3.5 },
+    March: { impressions: 1680, engagement: 112, comments: 35, shares: 18, newLikes: 68, videoViews: 750, clickThroughRate: 3.8 },
+    April: { impressions: 1320, engagement: 76, comments: 19, shares: 10, newLikes: 38, videoViews: 480, clickThroughRate: 2.9 },
+    May: { impressions: 1540, engagement: 98, comments: 26, shares: 14, newLikes: 55, videoViews: 590, clickThroughRate: 3.3 },
+    June: { impressions: 1180, engagement: 72, comments: 17, shares: 8, newLikes: 32, videoViews: 420, clickThroughRate: 2.7 },
+    July: { impressions: 1390, engagement: 85, comments: 22, shares: 11, newLikes: 42, videoViews: 510, clickThroughRate: 3.1 }
+  },
+  2026: {
+    January: { impressions: 1250, engagement: 89, comments: 23, shares: 12, newLikes: 45, videoViews: 567, clickThroughRate: 3.2 },
+    February: { impressions: 1450, engagement: 95, comments: 28, shares: 15, newLikes: 52, videoViews: 620, clickThroughRate: 3.5 },
+    March: { impressions: 1680, engagement: 112, comments: 35, shares: 18, newLikes: 68, videoViews: 750, clickThroughRate: 3.8 },
+    April: { impressions: 1320, engagement: 76, comments: 19, shares: 10, newLikes: 38, videoViews: 480, clickThroughRate: 2.9 },
+    May: { impressions: 1540, engagement: 98, comments: 26, shares: 14, newLikes: 55, videoViews: 590, clickThroughRate: 3.3 },
+    June: { impressions: 1180, engagement: 72, comments: 17, shares: 8, newLikes: 32, videoViews: 420, clickThroughRate: 2.7 },
+    July: { impressions: 1390, engagement: 85, comments: 22, shares: 11, newLikes: 42, videoViews: 510, clickThroughRate: 3.1 }
+  }
+};
+
+// Fetch monthly Facebook insights (with fallback to sample data)
+async function getMonthlyFacebookData() {
+  try {
+    // In production, this would fetch from Meta Graph API
+    // For now, return the sample monthly data structure
+    return monthlyFacebookData;
+  } catch (error) {
+    console.error('Facebook API error:', error);
+    // Return sample data if API fails
+    return monthlyFacebookData;
+  }
+}
+
 // API endpoint - fetch all dashboard data
-app.get('/api/dashboard', (req, res) => {
+app.get('/api/dashboard', async (req, res) => {
+  const monthlyFB = await getMonthlyFacebookData();
   res.json({
     2025: dashboardData[2025],
     2026: dashboardData[2026],
-    facebook: facebookMetrics
+    facebookMonthly: monthlyFB
   });
 });
 
