@@ -736,6 +736,11 @@
       }
     }
 
+    // Format number with thousand separators
+    function formatCurrency(value) {
+      return `RM ${parseFloat(value).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
+    }
+
     // Update dashboard with selected month and year data
     function updateDashboard(month, year = '2026') {
       const data = dashboardData[year]?.data;
@@ -755,18 +760,18 @@
       const onlinePct = ((online / current.totalCollection) * 100).toFixed(1);
 
       // Update KPI cards
-      document.getElementById('totalCollection').textContent = `RM ${current.totalCollection.toFixed(2)}`;
-      document.getElementById('totalCost').textContent = `RM ${current.totalCost.toFixed(2)}`;
-      document.getElementById('clientNet').textContent = `RM ${current.clientNet.toFixed(2)}`;
-      document.getElementById('advertyUpah').textContent = `RM ${current.advertyUpah.toFixed(2)}`;
+      document.getElementById('totalCollection').textContent = formatCurrency(current.totalCollection);
+      document.getElementById('totalCost').textContent = formatCurrency(current.totalCost);
+      document.getElementById('clientNet').textContent = formatCurrency(current.clientNet);
+      document.getElementById('advertyUpah').textContent = formatCurrency(current.advertyUpah);
 
       // Update breakdown
       document.getElementById('manualPct').textContent = `${manualPct}%`;
       document.getElementById('onlinePct').textContent = `${onlinePct}%`;
       document.getElementById('manualBar').style.width = `${manualPct}%`;
       document.getElementById('onlineBar').style.width = `${onlinePct}%`;
-      document.getElementById('manualValue').textContent = `RM ${manual.toFixed(2)}`;
-      document.getElementById('onlineValue').textContent = `RM ${online.toFixed(2)}`;
+      document.getElementById('manualValue').textContent = formatCurrency(manual);
+      document.getElementById('onlineValue').textContent = formatCurrency(online);
 
       // Update Facebook metrics (Row 3)
       if (dashboardData.facebook) {
@@ -781,9 +786,9 @@
       }
 
       // Update totals
-      document.getElementById('totalCollectionAll').textContent = `RM ${totals.totalCollection.toFixed(2)}`;
-      document.getElementById('totalCostAll').textContent = `RM ${totals.totalCost.toFixed(2)}`;
-      document.getElementById('clientNetAll').textContent = `RM ${totals.clientNet.toFixed(2)}`;
+      document.getElementById('totalCollectionAll').textContent = formatCurrency(totals.totalCollection);
+      document.getElementById('totalCostAll').textContent = formatCurrency(totals.totalCost);
+      document.getElementById('clientNetAll').textContent = formatCurrency(totals.clientNet);
     }
 
     // Month selector event listener
