@@ -597,6 +597,55 @@
         </div>
       </div>
 
+      <!-- Facebook Metrics Section (Row 3) -->
+      <div style="margin-bottom: 32px;">
+        <h3 style="font-size: 18px; font-weight: 700; color: #047857; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px;">📱 Facebook Page Performance (Monthly)</h3>
+        
+        <div class="kpi-grid">
+          <div class="kpi-card blue">
+            <div class="kpi-label">👁️ Total Impressions</div>
+            <div class="kpi-value" id="fbImpressions">0</div>
+            <div class="kpi-unit">Page reach</div>
+          </div>
+
+          <div class="kpi-card green">
+            <div class="kpi-label">💬 Total Engagement</div>
+            <div class="kpi-value" id="fbEngagement">0</div>
+            <div class="kpi-unit">Likes + Comments + Shares</div>
+          </div>
+
+          <div class="kpi-card orange">
+            <div class="kpi-label">💭 Total Comments</div>
+            <div class="kpi-value" id="fbComments">0</div>
+            <div class="kpi-unit">Direct comments</div>
+          </div>
+
+          <div class="kpi-card purple">
+            <div class="kpi-label">🔄 Total Shares</div>
+            <div class="kpi-value" id="fbShares">0</div>
+            <div class="kpi-unit">Share count</div>
+          </div>
+
+          <div class="kpi-card pink">
+            <div class="kpi-label">👍 New Page Likes</div>
+            <div class="kpi-value" id="fbNewLikes">0</div>
+            <div class="kpi-unit">Page growth</div>
+          </div>
+
+          <div class="kpi-card blue">
+            <div class="kpi-label">🎬 Video Views</div>
+            <div class="kpi-value" id="fbVideoViews">0</div>
+            <div class="kpi-unit">Video engagement</div>
+          </div>
+
+          <div class="kpi-card green">
+            <div class="kpi-label">🔗 Click-Through Rate</div>
+            <div class="kpi-value" id="fbCTR">0%</div>
+            <div class="kpi-unit">Link clicks</div>
+          </div>
+        </div>
+      </div>
+
       <!-- Summary Section -->
       <div class="summary">
         <h2>Cumulative Overview (All Months)</h2>
@@ -701,6 +750,18 @@
       document.getElementById('onlineBar').style.width = `${onlinePct}%`;
       document.getElementById('manualValue').textContent = `RM ${manual.toFixed(2)}`;
       document.getElementById('onlineValue').textContent = `RM ${online.toFixed(2)}`;
+
+      // Update Facebook metrics (Row 3)
+      if (dashboardData.facebook) {
+        const fb = dashboardData.facebook;
+        document.getElementById('fbImpressions').textContent = fb.impressions.toLocaleString();
+        document.getElementById('fbEngagement').textContent = fb.engagement.toLocaleString();
+        document.getElementById('fbComments').textContent = fb.comments.toLocaleString();
+        document.getElementById('fbShares').textContent = fb.shares.toLocaleString();
+        document.getElementById('fbNewLikes').textContent = fb.newLikes.toLocaleString();
+        document.getElementById('fbVideoViews').textContent = fb.videoViews.toLocaleString();
+        document.getElementById('fbCTR').textContent = fb.clickThroughRate.toFixed(1) + '%';
+      }
 
       // Update totals
       document.getElementById('totalCollectionAll').textContent = `RM ${totals.totalCollection.toFixed(2)}`;
