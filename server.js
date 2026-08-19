@@ -36,9 +36,27 @@ const dashboardData = {
   }
 };
 
+// Facebook API Configuration
+const FACEBOOK_PAGE_ID = '116256619764756';
+const FACEBOOK_ACCESS_TOKEN = 'EAAM1TTZBRzhYBSZAm5ZCZCOuJhdwtbwzWABWhtCH78KTTYKZCwBcj542vY6cgrLReNwiUV9qlPZBJwg1qixhvOLgt8s5vKHkmZCcZBROkdAhz0CZC47VsdeMyqyroAKOYgbx4TZA6TrFCHGICyzSwSTSi7tuvi7irZBoPNYHxkh1js8KSRKa3dC9mBXZA9ags1qGu6QtSHo07AG0M6uc0qzn01LNG4S6xhWGWY8ONl0yalyaFhQZCTZA4KBAWlc0ZAoann3IkhAoQPFuwDhGepAKqt63ktcf21d';
+
+// Mock Facebook metrics (fallback data)
+const facebookMetrics = {
+  impressions: 1250,
+  engagement: 89,
+  comments: 23,
+  shares: 12,
+  newLikes: 45,
+  videoViews: 567,
+  clickThroughRate: 3.2
+};
+
 // API endpoint - fetch all dashboard data
 app.get('/api/dashboard', (req, res) => {
-  res.json(dashboardData);
+  res.json({
+    ...dashboardData,
+    facebook: facebookMetrics
+  });
 });
 
 // Health check
