@@ -773,9 +773,9 @@
       document.getElementById('manualValue').textContent = formatCurrency(manual);
       document.getElementById('onlineValue').textContent = formatCurrency(online);
 
-      // Update Facebook metrics (Row 3)
-      if (dashboardData.facebook) {
-        const fb = dashboardData.facebook;
+      // Update Facebook metrics (Row 3) - Monthly data
+      if (dashboardData.facebookMonthly && dashboardData.facebookMonthly[year] && dashboardData.facebookMonthly[year][month]) {
+        const fb = dashboardData.facebookMonthly[year][month];
         document.getElementById('fbImpressions').textContent = fb.impressions.toLocaleString();
         document.getElementById('fbEngagement').textContent = fb.engagement.toLocaleString();
         document.getElementById('fbComments').textContent = fb.comments.toLocaleString();
