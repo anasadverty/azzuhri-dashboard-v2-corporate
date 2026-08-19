@@ -22,17 +22,17 @@ const dashboardData = {
     clientName: "AZ-ZUHRI",
     months: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
     data: {
-      January: { manualBank: 42286.10, billplz: 60105.00, stripe: 0.00, totalCollection: 102391.10, totalCost: 0.00, advertyUpah: 40144.64, clientNet: 57005.39 },
-      February: { manualBank: 22270.03, billplz: 14820.00, stripe: 0.00, totalCollection: 37090.03, totalCost: 0.00, advertyUpah: 14248.82, clientNet: 20233.33 },
-      March: { manualBank: 24586.71, billplz: 39190.00, stripe: 0.00, totalCollection: 63776.71, totalCost: 0.00, advertyUpah: 11935.29, clientNet: 16948.11 },
-      April: { manualBank: 7983.32, billplz: 4355.00, stripe: 0.00, totalCollection: 12338.32, totalCost: 0.00, advertyUpah: 2672.27, clientNet: 3794.62 },
-      May: { manualBank: 10089.15, billplz: 2035.00, stripe: 0.00, totalCollection: 12124.15, totalCost: 0.00, advertyUpah: 2098.09, clientNet: 2979.28 },
-      June: { manualBank: 5991.70, billplz: 110.00, stripe: 0.00, totalCollection: 6101.70, totalCost: 0.00, advertyUpah: 2234.78, clientNet: 3173.38 },
-      July: { manualBank: 8636.41, billplz: 860.00, stripe: 0.00, totalCollection: 9496.41, totalCost: 0.00, advertyUpah: 3677.04, clientNet: 5221.40 }
+      January: { manualBank: 42286.10, billplz: 60105.00, stripe: 0.00, totalCollection: 102391.10, totalCost: 2029.49, advertyUpah: 40144.64, clientNet: 57005.39 },
+      February: { manualBank: 22270.03, billplz: 14820.00, stripe: 0.00, totalCollection: 37090.03, totalCost: 1467.97, advertyUpah: 14248.82, clientNet: 20233.33 },
+      March: { manualBank: 24586.71, billplz: 39190.00, stripe: 0.00, totalCollection: 63776.71, totalCost: 33938.48, advertyUpah: 11935.29, clientNet: 16948.11 },
+      April: { manualBank: 7983.32, billplz: 4355.00, stripe: 0.00, totalCollection: 12338.32, totalCost: 5657.65, advertyUpah: 2672.27, clientNet: 3794.62 },
+      May: { manualBank: 10089.15, billplz: 2035.00, stripe: 0.00, totalCollection: 12124.15, totalCost: 6878.93, advertyUpah: 2098.09, clientNet: 2979.28 },
+      June: { manualBank: 5991.70, billplz: 110.00, stripe: 0.00, totalCollection: 6101.70, totalCost: 514.76, advertyUpah: 2234.78, clientNet: 3173.38 },
+      July: { manualBank: 8636.41, billplz: 860.00, stripe: 0.00, totalCollection: 9496.41, totalCost: 303.80, advertyUpah: 3677.04, clientNet: 5221.40 }
     },
     totals: {
       totalCollection: 243318.42,
-      totalCost: 0.00,
+      totalCost: 50791.08,
       clientNet: 109355.11
     }
   },
