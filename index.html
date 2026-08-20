@@ -133,7 +133,6 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
-      margin-bottom: 16px;
     }
 
     .selector {
@@ -168,6 +167,67 @@
       box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.1);
     }
 
+    /* ===== PIE CHART CARD ===== */
+    .pie-card {
+      background: var(--bg-white);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      border-top: 4px solid var(--primary);
+    }
+
+    .pie-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 12px;
+    }
+
+    .pie-chart {
+      width: 100px;
+      height: 100px;
+      flex-shrink: 0;
+    }
+
+    .pie-legend {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .legend-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .legend-label {
+      font-weight: 600;
+      color: var(--text-dark);
+      font-size: 11px;
+    }
+
+    .legend-value {
+      font-size: 11px;
+      color: var(--text-light);
+    }
+
     /* ===== KPI CARD ===== */
     .kpi-card {
       background: var(--bg-white);
@@ -177,15 +237,6 @@
       border-left: 5px solid var(--primary);
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     }
-
-    .kpi-card.secondary {
-      border-left: 4px solid;
-    }
-
-    .kpi-card.secondary-teal { border-left-color: var(--secondary); }
-    .kpi-card.secondary-gold { border-left-color: var(--accent-gold); }
-    .kpi-card.secondary-purple { border-left-color: var(--accent-purple); }
-    .kpi-card.secondary-rose { border-left-color: var(--accent-rose); }
 
     .kpi-label {
       font-size: 11px;
@@ -204,12 +255,6 @@
       line-height: 1.2;
     }
 
-    .kpi-card.primary .kpi-value { color: var(--primary); }
-    .kpi-card.secondary-teal .kpi-value { color: var(--secondary); }
-    .kpi-card.secondary-gold .kpi-value { color: var(--accent-gold); }
-    .kpi-card.secondary-purple .kpi-value { color: var(--accent-purple); }
-    .kpi-card.secondary-rose .kpi-value { color: var(--accent-rose); }
-
     .kpi-unit {
       font-size: 12px;
       color: var(--text-light);
@@ -224,6 +269,236 @@
       letter-spacing: 0.5px;
       margin: 16px 0 12px 0;
       padding: 0 4px;
+    }
+
+    /* ===== BREAKDOWN SECTION ===== */
+    .breakdown-section {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .breakdown-item {
+      margin-bottom: 12px;
+    }
+
+    .breakdown-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      font-size: 12px;
+    }
+
+    .breakdown-label {
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .breakdown-pct {
+      color: var(--text-light);
+      font-size: 11px;
+    }
+
+    .bar-chart {
+      height: 24px;
+      background: #f3f4f6;
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+    }
+
+    .bar-fill {
+      transition: width 0.3s;
+    }
+
+    .bar-fill.manual {
+      background: linear-gradient(90deg, var(--primary), #10b981);
+    }
+
+    .bar-fill.online {
+      background: linear-gradient(90deg, var(--secondary), #06b6d4);
+    }
+
+    .breakdown-value {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-top: 4px;
+    }
+
+    /* ===== BIG METRICS ROW ===== */
+    .metrics-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .big-metric {
+      background: var(--bg-white);
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      border-top: 4px solid;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .big-metric.costing {
+      border-top-color: var(--accent-gold);
+    }
+
+    .big-metric.client {
+      border-top-color: var(--accent-purple);
+    }
+
+    .big-metric.adverty {
+      border-top-color: var(--accent-rose);
+    }
+
+    .metric-icon {
+      font-size: 40px;
+      flex-shrink: 0;
+    }
+
+    .metric-content {
+      flex: 1;
+    }
+
+    .metric-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .metric-value {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .metric-unit {
+      font-size: 11px;
+      color: var(--text-light);
+      margin-top: 2px;
+    }
+
+    /* ===== FACEBOOK METRICS ===== */
+    .fb-top-metrics {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .fb-large-card {
+      background: var(--bg-white);
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      border-left: 5px solid;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .fb-large-card.primary {
+      border-left-color: var(--primary);
+    }
+
+    .fb-large-card.teal {
+      border-left-color: var(--secondary);
+    }
+
+    .fb-large-card.rose {
+      border-left-color: var(--accent-rose);
+    }
+
+    .fb-icon-large {
+      font-size: 28px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .fb-content {
+      flex: 1;
+    }
+
+    .fb-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .fb-value-large {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .fb-large-card.primary .fb-value-large { color: var(--primary); }
+    .fb-large-card.teal .fb-value-large { color: var(--secondary); }
+    .fb-large-card.rose .fb-value-large { color: var(--accent-rose); }
+
+    .fb-unit {
+      font-size: 11px;
+      color: var(--text-light);
+    }
+
+    .fb-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .fb-small-card {
+      background: var(--bg-white);
+      border-radius: 10px;
+      padding: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+      text-align: center;
+      border-top: 3px solid;
+    }
+
+    .fb-small-card.gold {
+      border-top-color: var(--accent-gold);
+    }
+
+    .fb-small-card.purple {
+      border-top-color: var(--accent-purple);
+    }
+
+    .fb-small-card.teal {
+      border-top-color: var(--secondary);
+    }
+
+    .fb-icon-small {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .fb-small-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 2px;
+    }
+
+    .fb-small-label {
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--text-light);
+      text-transform: uppercase;
     }
 
     /* ===== FOOTER ===== */
@@ -268,7 +543,6 @@
       color: var(--text-light);
     }
 
-    /* ===== LOADING ===== */
     #loading {
       display: flex;
       align-items: center;
@@ -280,54 +554,6 @@
 
     #dashboard {
       display: none;
-    }
-
-    /* ===== BREAKDOWN ===== */
-    .breakdown {
-      margin-bottom: 8px;
-    }
-
-    .breakdown-header {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 6px;
-      font-size: 11px;
-    }
-
-    .breakdown-label {
-      font-weight: 600;
-      color: var(--text-dark);
-    }
-
-    .breakdown-pct {
-      color: var(--text-light);
-    }
-
-    .progress-bar {
-      height: 6px;
-      background: #f0f0f0;
-      border-radius: 3px;
-      overflow: hidden;
-      margin-bottom: 4px;
-    }
-
-    .progress-fill {
-      height: 100%;
-      transition: width 0.3s;
-    }
-
-    .progress-fill.manual {
-      background: linear-gradient(90deg, var(--primary), #10b981);
-    }
-
-    .progress-fill.online {
-      background: linear-gradient(90deg, var(--secondary), #06b6d4);
-    }
-
-    .breakdown-value {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--text-dark);
     }
   </style>
 </head>
@@ -385,117 +611,176 @@
         </div>
       </div>
 
-      <!-- FINANCIAL METRICS -->
-      <div class="section-title">💰 Financial Performance</div>
+      <!-- CUMULATIVE OVERVIEW (TOP) -->
+      <div class="section-title">📊 Cumulative Overview</div>
+      <div class="pie-card">
+        <div class="pie-container">
+          <svg class="pie-chart" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" fill="none" stroke="#047857" stroke-width="12" stroke-dasharray="40 100" transform="rotate(-90 50 50)"></circle>
+            <circle cx="50" cy="50" r="40" fill="none" stroke="#0891b2" stroke-width="12" stroke-dasharray="20 100" stroke-dashoffset="-40" transform="rotate(-90 50 50)"></circle>
+            <circle cx="50" cy="50" r="40" fill="none" stroke="#db2777" stroke-width="12" stroke-dasharray="40 100" stroke-dashoffset="-60" transform="rotate(-90 50 50)"></circle>
+          </svg>
+          <div class="pie-legend">
+            <div class="legend-item">
+              <div class="legend-dot" style="background: var(--primary);"></div>
+              <div class="legend-text">
+                <span class="legend-label">Collection</span>
+                <span class="legend-value" id="pieCollection">RM 0</span>
+              </div>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background: var(--secondary);"></div>
+              <div class="legend-text">
+                <span class="legend-label">Cost</span>
+                <span class="legend-value" id="pieCost">RM 0</span>
+              </div>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background: var(--accent-rose);"></div>
+              <div class="legend-text">
+                <span class="legend-label">Client Net</span>
+                <span class="legend-value" id="pieClient">RM 0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <div class="kpi-card primary">
-        <div class="kpi-label">Total Collection</div>
+      <!-- PERFORMANCE REVIEW -->
+      <div class="section-title">📈 Performance Review</div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">💰 Total Collection</div>
         <div class="kpi-value" id="totalCollection">RM 0.00</div>
         <div class="kpi-unit" id="monthDisplay">January 2026</div>
-      </div>
 
-      <div class="kpi-card">
-        <div class="kpi-label">Collection Breakdown</div>
-        <div class="breakdown">
-          <div class="breakdown-header">
-            <span class="breakdown-label">Manual</span>
-            <span class="breakdown-pct" id="manualPct">0%</span>
+        <div class="breakdown-section">
+          <div class="breakdown-item">
+            <div class="breakdown-header">
+              <span class="breakdown-label">Manual</span>
+              <span class="breakdown-pct" id="manualPct">0%</span>
+            </div>
+            <div class="bar-chart">
+              <div class="bar-fill manual" id="manualBar" style="width: 0%"></div>
+            </div>
+            <div class="breakdown-value" id="manualValue">RM 0.00</div>
           </div>
-          <div class="progress-bar">
-            <div class="progress-fill manual" id="manualBar" style="width: 0%"></div>
+          <div class="breakdown-item">
+            <div class="breakdown-header">
+              <span class="breakdown-label">Online</span>
+              <span class="breakdown-pct" id="onlinePct">0%</span>
+            </div>
+            <div class="bar-chart">
+              <div class="bar-fill online" id="onlineBar" style="width: 0%"></div>
+            </div>
+            <div class="breakdown-value" id="onlineValue">RM 0.00</div>
           </div>
-          <div class="breakdown-value" id="manualValue">RM 0.00</div>
         </div>
-        <div class="breakdown" style="margin-top: 12px;">
-          <div class="breakdown-header">
-            <span class="breakdown-label">Online</span>
-            <span class="breakdown-pct" id="onlinePct">0%</span>
+      </div>
+
+      <!-- BIG 3 METRICS -->
+      <div class="metrics-row">
+        <div class="big-metric costing">
+          <div class="metric-icon">💳</div>
+          <div class="metric-content">
+            <div class="metric-label">Total Costing</div>
+            <div class="metric-value" id="totalCost">RM 0.00</div>
+            <div class="metric-unit">Ad & operational</div>
           </div>
-          <div class="progress-bar">
-            <div class="progress-fill online" id="onlineBar" style="width: 0%"></div>
+        </div>
+
+        <div class="big-metric client">
+          <div class="metric-icon">✨</div>
+          <div class="metric-content">
+            <div class="metric-label">Client Gets</div>
+            <div class="metric-value" id="clientNet">RM 0.00</div>
+            <div class="metric-unit">Net after commission</div>
           </div>
-          <div class="breakdown-value" id="onlineValue">RM 0.00</div>
+        </div>
+
+        <div class="big-metric adverty">
+          <div class="metric-icon">💼</div>
+          <div class="metric-content">
+            <div class="metric-label">Adverty Gets</div>
+            <div class="metric-value" id="advertyUpah">RM 0.00</div>
+            <div class="metric-unit">40% + 8% SST</div>
+          </div>
         </div>
       </div>
 
-      <div class="kpi-card secondary secondary-gold">
-        <div class="kpi-label">💳 Total Costing</div>
-        <div class="kpi-value" id="totalCost">RM 0.00</div>
-        <div class="kpi-unit">Ad & operational costs</div>
-      </div>
-
-      <div class="kpi-card secondary secondary-purple">
-        <div class="kpi-label">✨ Client Gets</div>
-        <div class="kpi-value" id="clientNet">RM 0.00</div>
-        <div class="kpi-unit">Net after commission</div>
-      </div>
-
-      <div class="kpi-card secondary secondary-rose">
-        <div class="kpi-label">💼 Adverty Gets</div>
-        <div class="kpi-value" id="advertyUpah">RM 0.00</div>
-        <div class="kpi-unit">40% + 8% SST</div>
-      </div>
-
-      <!-- FACEBOOK METRICS -->
+      <!-- FACEBOOK PERFORMANCE -->
       <div class="section-title">📱 Facebook Performance</div>
 
-      <div class="kpi-card primary">
-        <div class="kpi-label">👁️ Total Impressions</div>
-        <div class="kpi-value" id="fbImpressions">0</div>
-        <div class="kpi-unit">Page reach</div>
+      <div class="fb-top-metrics">
+        <div class="fb-large-card primary">
+          <div class="fb-icon-large">👁️</div>
+          <div class="fb-content">
+            <div class="fb-label">Total Impressions</div>
+            <div class="fb-value-large" id="fbImpressions">0</div>
+            <div class="fb-unit">Page reach</div>
+          </div>
+        </div>
+
+        <div class="fb-large-card teal">
+          <div class="fb-icon-large">💬</div>
+          <div class="fb-content">
+            <div class="fb-label">Total Engagement</div>
+            <div class="fb-value-large" id="fbEngagement">0</div>
+            <div class="fb-unit">Interactions</div>
+          </div>
+        </div>
+
+        <div class="fb-large-card rose">
+          <div class="fb-icon-large">👍</div>
+          <div class="fb-content">
+            <div class="fb-label">New Likes</div>
+            <div class="fb-value-large" id="fbNewLikes">0</div>
+            <div class="fb-unit">Growth</div>
+          </div>
+        </div>
       </div>
 
-      <div class="kpi-card secondary secondary-teal">
-        <div class="kpi-label">💬 Total Engagement</div>
-        <div class="kpi-value" id="fbEngagement">0</div>
-        <div class="kpi-unit">Interactions</div>
+      <div class="fb-grid">
+        <div class="fb-small-card gold">
+          <div class="fb-icon-small">💭</div>
+          <div class="fb-small-value" id="fbComments">0</div>
+          <div class="fb-small-label">Comments</div>
+        </div>
+
+        <div class="fb-small-card purple">
+          <div class="fb-icon-small">🔄</div>
+          <div class="fb-small-value" id="fbShares">0</div>
+          <div class="fb-small-label">Shares</div>
+        </div>
+
+        <div class="fb-small-card teal">
+          <div class="fb-icon-small">🎬</div>
+          <div class="fb-small-value" id="fbVideoViews">0</div>
+          <div class="fb-small-label">Videos</div>
+        </div>
+
+        <div class="fb-small-card gold">
+          <div class="fb-icon-small">🔗</div>
+          <div class="fb-small-value" id="fbCTR">0%</div>
+          <div class="fb-small-label">CTR</div>
+        </div>
       </div>
 
-      <div class="kpi-card secondary secondary-rose">
-        <div class="kpi-label">👍 New Likes</div>
-        <div class="kpi-value" id="fbNewLikes">0</div>
-        <div class="kpi-unit">Growth</div>
-      </div>
-
-      <div class="kpi-card secondary secondary-gold">
-        <div class="kpi-label">💭 Comments</div>
-        <div class="kpi-value" id="fbComments">0</div>
-        <div class="kpi-unit">Direct</div>
-      </div>
-
-      <div class="kpi-card secondary secondary-purple">
-        <div class="kpi-label">🔄 Shares</div>
-        <div class="kpi-value" id="fbShares">0</div>
-        <div class="kpi-unit">Count</div>
-      </div>
-
-      <div class="kpi-card secondary secondary-teal">
-        <div class="kpi-label">🎬 Videos</div>
-        <div class="kpi-value" id="fbVideoViews">0</div>
-        <div class="kpi-unit">Views</div>
-      </div>
-
-      <div class="kpi-card secondary secondary-gold">
-        <div class="kpi-label">🔗 CTR</div>
-        <div class="kpi-value" id="fbCTR">0%</div>
-        <div class="kpi-unit">Click rate</div>
-      </div>
-
-      <!-- SUMMARY -->
-      <div class="section-title">📊 Cumulative Overview</div>
+      <!-- TOTALS SUMMARY -->
+      <div class="section-title">📋 Summary (All Months)</div>
 
       <div class="kpi-card">
-        <div class="kpi-label">Total Collection (All Months)</div>
+        <div class="kpi-label">Total Collection</div>
         <div class="kpi-value" id="totalCollectionAll">RM 0.00</div>
       </div>
 
       <div class="kpi-card">
-        <div class="kpi-label">Total Cost (All Months)</div>
+        <div class="kpi-label">Total Cost</div>
         <div class="kpi-value" id="totalCostAll">RM 0.00</div>
       </div>
 
       <div class="kpi-card">
-        <div class="kpi-label">Total Client Gets (All Months)</div>
+        <div class="kpi-label">Total Client Gets</div>
         <div class="kpi-value" id="clientNetAll">RM 0.00</div>
       </div>
 
@@ -586,6 +871,10 @@
         document.getElementById('fbVideoViews').textContent = fb.videoViews.toLocaleString();
         document.getElementById('fbCTR').textContent = fb.clickThroughRate.toFixed(1) + '%';
       }
+
+      document.getElementById('pieCollection').textContent = formatCurrency(totals.totalCollection);
+      document.getElementById('pieCost').textContent = formatCurrency(totals.totalCost);
+      document.getElementById('pieClient').textContent = formatCurrency(totals.clientNet);
 
       document.getElementById('totalCollectionAll').textContent = formatCurrency(totals.totalCollection);
       document.getElementById('totalCostAll').textContent = formatCurrency(totals.totalCost);
